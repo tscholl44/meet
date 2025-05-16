@@ -1,25 +1,37 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
-const NumberOfEvents = () => {
-  const [eventCount, setEventCount] = useState(32); // Default value is 32
+const NumberOfEvents = ({ currentNOE, setCurrentNOE, setErrorAlert }) => {
 
-  const handleInputChange = (event) => {
-    setEventCount(event.target.value);
-  };
+  const [number, setNumber] = useState(currentNOE);
+
+  const handleInputChanged = (event) => {
+    const value = Number(event.target.value);
+    setNumber(value);
+    setCurrentNOE(value);
+
+    let errorText;
+    if (isNaN(currentNOE)) {
+      errorText = "Enter a valid number to see the events"
+    } else if (currentNOE < 1) {
+      errorText = "Enter a number greater than zero to see the events"
+    } else {
+      errorText =""
+    }
+    setErrorAlert(errorText);
+  }
 
   return (
     <div id="number-of-events">
-      <label htmlFor="event-count-input">Number of Events:</label>
+      <label htmlFor="number-of-events-input">Number of Events: </label>
       <input
         type="number"
-        id="event-count-input"
-        className="event-number"
-        role="textbox"
-        value={eventCount}
-        onChange={handleInputChange}
+        id="number-of-events-input"
+        className="number-of-events-input"
+        value={number}
+        onChange={handleInputChanged}
       />
     </div>
   );
-};
+}
 
 export default NumberOfEvents;
