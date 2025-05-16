@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
-const CitySearch = ({ allLocations = [] }) => { // Add default value here
+const CitySearch = ({ allLocations = [], setCurrentCity }) => { // Add default value here
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  
 
+  useEffect(() => {
+    setSuggestions(allLocations);
+  }, [`${allLocations}`]);   
+  
   const handleInputChanged = (event) => {
     const value = event.target.value;
     const filteredLocations = Array.isArray(allLocations)
@@ -23,8 +26,10 @@ const CitySearch = ({ allLocations = [] }) => { // Add default value here
     const value = event.target.textContent;
     setQuery(value);
     setShowSuggestions(false); // to hide the list
+    setCurrentCity(value);
   };  
   
+
   return (
     <div id="city-search">
       <input
