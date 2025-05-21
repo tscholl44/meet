@@ -39,11 +39,22 @@ User Story:
 I should be able to show/hide event details
 So that I can choose whether to display that information"
 
-Scenarios:
+Scenario 1: An event element is collapsed by default
 Given the user is on the events page
-When the user selects an event
-Then the user should be able to show/hide event details for that event
+When the page loads
+Then the event details for all events should be hidden
 
+Scenario 2: User can expand an event to see details
+Given the user is on the events page
+And event details are hidden
+When the user clicks on an event
+Then the event details should be displayed
+
+Scenario 3: User can collapse an event to hide details
+Given the user is on the events page
+And event details are displayed for an event
+When the user clicks on the same event
+Then the event details should be hidden
 
 
 Feature: Specify Number of Events
@@ -53,11 +64,15 @@ User Story:
 I should be able to see how many events are available
 So that I don't have to count them"
 
-Scenarios:
+Scenario 1: When user has not specified a number, 32 events are shown by default
 Given the user is on the events page
-When the user sees event results
-Then the user should see how many results are displayed
+When the events paged renders
+Then the user should see 32 events by default
 
+Scenario 2: User can change the number of events displayed
+Given the user is on the events page
+When the user selects a number of events to display
+Then the events page should render that number of events
 
 
 Feature: Use the App When Offline
