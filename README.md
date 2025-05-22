@@ -24,11 +24,11 @@ User Story:
 I should be able to filter events by city
 So that I can see a list of events taking place in that city."
 
-Scenarios:
+Scenario 1: An event element is collapsed by default.
 
-Given the main page is open;
-When user starts typing in the city textbox;
-Then the user should receive a list of cities (suggestions) that match what they’ve typed.
+Scenario 2: User can expand an event to see details.
+
+Scenario 3: User can collapse an event to hide details.
 
 
 
