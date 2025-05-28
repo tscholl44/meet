@@ -19,6 +19,13 @@ const App = () => {
   const [warningAlert, setWarningAlert] = useState("");  
 
   useEffect(() => {
+    if (navigator.onLine) {
+      setWarningAlert("");
+    } else {
+      setWarningAlert(
+        "You are offline. The displayed event list has been loaded from the cache."
+      );
+    }
     fetchData();
   }, [currentCity, currentNOE]);
   
