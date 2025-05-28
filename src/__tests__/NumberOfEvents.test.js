@@ -23,7 +23,7 @@ describe('<NumberOfEvents /> component', () => {
 
   test('default number is 32', async () => {
     const numberTextBox = NumberOfEventsComponent.queryByRole('textbox');
-    expect(numberTextBox).toHaveValue("32");
+    expect(numberTextBox).toHaveValue(32);
   });
 
   test('number of events text box value changes when the user types in it', async () => {
@@ -32,7 +32,7 @@ describe('<NumberOfEvents /> component', () => {
     await user.type(numberTextBox, "123")
 
     // 32 (the default value already written) + 123
-    expect(numberTextBox).toHaveValue("32123");
+    expect(numberTextBox).toHaveValue(32123);
   });
 });
 
@@ -40,7 +40,7 @@ describe('<NumberOfEvents /> integration', () => {
   test('integration: number of events rendered matches user input', async () => {
     const { container, getByRole } = render(<App />);
     const appRootNode = container.firstChild;
-    const numberInputBox = within(appRootNode.querySelector('#number-of-events')).getByRole('spinbutton');
+    const numberInputBox = within(appRootNode.querySelector('#number-of-events'));
     // Change the value to 5
     await userEvent.clear(numberInputBox);
     await userEvent.type(numberInputBox, '5');
