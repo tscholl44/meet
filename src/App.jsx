@@ -49,7 +49,7 @@ const App = () => {
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setInfoAlert={setInfoAlert} />
       <NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert} />
       <div className="charts-container">
-        <EventGenresChart allLocations={allLocations} events={events} />
+        <CityEventsChart allLocations={allLocations} events={events} />
       </div>
       <EventList events={events} /> 
     </div>
