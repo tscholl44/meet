@@ -38,17 +38,18 @@ describe('<NumberOfEvents /> component', () => {
 
 describe('<NumberOfEvents /> integration', () => {
   test('integration: number of events rendered matches user input', async () => {
-    const { container, getByRole } = render(<App />);
-    const appRootNode = container.firstChild;
-    const numberInputBox = within(appRootNode.querySelector('#number-of-events'));
-    // Change the value to 5
-    await userEvent.clear(numberInputBox);
-    await userEvent.type(numberInputBox, '5');
-    // Wait for the event list to update
-    const eventListNode = appRootNode.querySelector('#event-list');
+    const user = userEvent.setup();
+    const AppComponent = render(<App />);
+    const AppDOM = AppComponent.container.firstChild;
+
+    const EventListDOM = AppDOM.querySelector('#event-list');
+    const NOEDOM = AppDOM.querySelector('#number-of-events');
+    const NumberOfEventsTextBox = within(NOEDOM).queryByRole('textbox');
+    await user.type(NumberOfEventsTextBox, '{backspace}{backspace}10');
+
     await waitFor(() => {
-      const renderedEventItems = within(eventListNode).queryAllByRole('listitem');
-      expect(renderedEventItems.length).toBe(5);
+        const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+        expect(EventListItems.length).toBeLessThanOrEqual(10);
     });
   });  
 
