@@ -29,7 +29,6 @@ defineFeature(feature, test => {
             const AppDOM = AppComponent.container.firstChild;
             const EventListDOM = AppDOM.querySelector('#event-list');
             const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-
             EventListItems.forEach((item) => {
                 const eventDetails = within(item).queryByText(/Event Details/i);
                 expect(eventDetails).not.toBeInTheDocument();
@@ -69,16 +68,17 @@ defineFeature(feature, test => {
 
         });
 
-        then('the event details should be displayed', () => {
+        then('the event details should be displayed', async () => {
             const AppDOM = AppComponent.container.firstChild;
             const EventListDOM = AppDOM.querySelector('#event-list');
             const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+            await waitFor(() => {
 
-            EventListItems.forEach((item) => {
-                const eventDetails = within(item).queryByText(/Event Details/i);
-                expect(eventDetails).toBeInTheDocument();
+                EventListItems.forEach((item) => {
+                    const eventDetails = within(item).queryByText(/show details/i);
+                    expect(eventDetails).toBeInTheDocument();
+                });
             });
-
         });
     });
 
@@ -95,34 +95,35 @@ defineFeature(feature, test => {
             const EventListItems = within(EventListDOM).queryAllByRole('listitem');
 
             EventListItems.forEach((item) => {
-                const eventDetails = within(item).queryByText(/Event Details/i);
+                const eventDetails = within(item).queryByText(/show details/i);
                 expect(eventDetails).toBeInTheDocument();
             });
 
         });
 
-        when('the user clicks on the same event', () => {
+        when('the user clicks on the same event', async () => {
             const AppDOM = AppComponent.container.firstChild;
             const EventListDOM = AppDOM.querySelector('#event-list');
-            const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-
             // Assuming the first event is clicked
-            const eventToClick = within(EventListItems[0]).queryByText('hide details');
-            const user = userEvent.setup();
-            user.click(eventToClick);
-
+            await waitFor(() => {
+                const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+                expect(EventListItems.length).toBe(32);
+                const eventToClick = within(EventListItems[0]).queryByText('hide details');
+                const user = userEvent.setup();
+                user.click(eventToClick);
+            });
         });
 
-        then('the event details should be hidden', () => {
+        then('the event details should be hidden', async () => {
             const AppDOM = AppComponent.container.firstChild;
             const EventListDOM = AppDOM.querySelector('#event-list');
-            const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-
-            EventListItems.forEach((item) => {
-                const eventDetails = within(item).queryByText(/Event Details/i);
-                expect(eventDetails).not.toBeInTheDocument();
+            await waitFor(() => {
+                const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+                EventListItems.forEach((item) => {
+                    const eventDetails = within(item).queryByText(/show details/i);
+                    expect(eventDetails).toBeInTheDocument();
+                });
             });
-
         });
     });
 });
