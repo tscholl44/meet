@@ -39,11 +39,11 @@ defineFeature(feature, test => {
         });
 
         when('the user selects a number of events to display', async () => {
-            const user = userEvent.setup();
             const AppDOM = AppComponent.container.firstChild;
-            const numberInputBox = within(AppDOM.querySelector('#number-of-events')).getByRole('spinbutton');
-            await user.clear(numberInputBox);
-            await user.type(numberInputBox, '5');
+            const NOEDOM = AppDOM.querySelector('#number-of-events');
+            const numberOfEventsInput = within(NOEDOM).queryByRole('textbox');
+            const user = userEvent.setup();
+            await user.type(numberOfEventsInput, '{backspace}{backspace}5');
         });
 
         then('the events page should render that number of events', async () => {
