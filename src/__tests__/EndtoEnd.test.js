@@ -11,8 +11,10 @@ describe('show/hide an event details', () => {
         await page.waitForSelector('.event');
     });
 
-    afterAll(() => {
-        browser.close();
+    afterAll(async () => {
+        if (browser) {
+            await browser.close();
+        }
     });
 
 
@@ -49,7 +51,9 @@ describe('Filter events by city.', () => {
     });
 
     afterAll(async () => {
-        await browser.close();
+        if (browser) {
+            await browser.close();
+        }
     });
 
     test('When user hasn’t searched for a city, show upcoming events from all cities.', async () => {
