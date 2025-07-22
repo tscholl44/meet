@@ -61,6 +61,7 @@ input[type="number"] {
   text-align: left;
   padding: 8px 6px 8px 10px;
   background-color: #eee;
+  color: #000; /* <-- Add this line for black text */
   cursor: default;
 }
 
