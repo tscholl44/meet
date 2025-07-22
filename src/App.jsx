@@ -48,8 +48,25 @@ const App = () => {
         {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
       </div>
       <div className="main-content">
-        <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setInfoAlert={setInfoAlert} />
-        <NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert} />
+        <h1 className="page-title">CodeFare</h1>
+        <div className="tagline"><em>Collab, Create, Connect</em></div>
+        <CitySearch
+          allLocations={allLocations}
+          setCurrentCity={setCurrentCity}
+          setInfoAlert={setInfoAlert}
+          inputPlaceholder="Enter your city"
+        />
+        <NumberOfEvents
+          currentNOE={currentNOE}
+          setCurrentNOE={setCurrentNOE}
+          setErrorAlert={setErrorAlert}
+        />
+        <button
+          className="search-btn"
+          onClick={fetchData}
+        >
+          search events
+        </button>
         <div className="charts-container">
           <div style={{width: '100%', maxWidth: 600}}>
             <div className="chart-title">Event Genres Distribution</div>
