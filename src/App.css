@@ -142,12 +142,13 @@ input[type="number"] {
 
 /* Add a wrapper for all main content */
 .main-content {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100vw;
+  max-width: none;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 2vw;
 }
 
 /* Charts container: horizontal on desktop, vertical on mobile */
@@ -157,11 +158,18 @@ input[type="number"] {
   justify-content: center;
   align-items: flex-start;
   gap: 32px;
-  width: 100%;
+  width: 100vw;
+  max-width: none;
   margin-top: 20px;
+  padding: 0 2vw;
 }
 
 @media (max-width: 900px) {
+  .main-content,
+  .charts-container {
+    width: 100vw;
+    padding: 0 1vw;
+  }
   .charts-container {
     flex-direction: column;
     align-items: center;
