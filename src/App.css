@@ -154,14 +154,22 @@ input[type="number"] {
 /* Charts container: horizontal on desktop, vertical on mobile */
 .charts-container {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column; /* Stack vertically */
+  align-items: center;    /* Center horizontally */
   gap: 32px;
   width: 100vw;
   max-width: none;
   margin-top: 20px;
   padding: 0 2vw;
+}
+
+.chart-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 12px;
+  text-align: center;
+  letter-spacing: 1px;
 }
 
 @media (max-width: 900px) {
