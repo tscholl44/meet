@@ -94,7 +94,7 @@ input[type="number"] {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   border-radius: 16px;
   border: none;
-  padding: 24px 24px 48px 24px;
+  padding: 24px 24px 64px 24px; /* Increase bottom padding for button space */
   margin-bottom: 0;
   text-align: left;
   position: relative;
@@ -124,8 +124,6 @@ input[type="number"] {
   border: none;
   box-shadow: 0 2px 8px rgba(168, 255, 120, 0.15);
   transition: background 0.2s;
-  margin-top: 24px;    /* Add space above the button */
-  margin-bottom: 8px;  /* Add space below the button */
 }
 
 /* Alerts container styling */
