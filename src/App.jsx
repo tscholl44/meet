@@ -51,8 +51,14 @@ const App = () => {
         <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setInfoAlert={setInfoAlert} />
         <NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert} />
         <div className="charts-container">
-          <CityEventsChart allLocations={allLocations} events={events} />
-          <EventGenresChart events={events} />
+          <div style={{width: '100%', maxWidth: 600}}>
+            <div className="chart-title">Event Genres Distribution</div>
+            <EventGenresChart events={events} />
+          </div>
+          <div style={{width: '100%', maxWidth: 600}}>
+            <div className="chart-title">Events per City</div>
+            <CityEventsChart allLocations={allLocations} events={events} />
+          </div>
         </div>
         <EventList events={events} /> 
       </div>
