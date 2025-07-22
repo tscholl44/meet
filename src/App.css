@@ -140,18 +140,32 @@ input[type="number"] {
   z-index: 1000;
 }
 
-.charts-container {
+/* Add a wrapper for all main content */
+.main-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
-  grid-template-columns: 1fr 1fr
 }
 
-@media (max-width: 768px) {
+/* Charts container: horizontal on desktop, vertical on mobile */
+.charts-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  width: 100%;
+  margin-top: 20px;
+}
 
+@media (max-width: 900px) {
   .charts-container {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
   }
 }
 
