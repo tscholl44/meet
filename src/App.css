@@ -60,8 +60,8 @@ input[type="number"] {
 .suggestions > li {
   text-align: left;
   padding: 8px 6px 8px 10px;
-  background-color: #eee;
-  color: #000; /* <-- Add this line for black text */
+  background-color: #7a7a7a;
+  color: #ffffff; /* <-- Add this line for black text */
   cursor: default;
 }
 
