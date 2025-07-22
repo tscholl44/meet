@@ -61,7 +61,7 @@ input[type="number"] {
   text-align: left;
   padding: 8px 6px 8px 10px;
   background-color: #7a7a7a;
-  color: #ffffff; /* <-- Add this line for black text */
+  color: #ffffff; 
   cursor: default;
 }
 
@@ -118,17 +118,14 @@ input[type="number"] {
   border-radius: 8px;
   outline: none;
   cursor: pointer;
-  background: #ff6e7f;
-  background: linear-gradient(90deg, #ff6e7f 0%, #bfe9ff 100%);
-  color: #232526;
+  background: linear-gradient(90deg, #e0ffe9 0%, #a8ff78 50%, #ffffff 100%);
+  color: #1e3c72;
   font-weight: bold;
   border: none;
-  box-shadow: 0 2px 8px rgba(255, 110, 127, 0.15);
+  box-shadow: 0 2px 8px rgba(168, 255, 120, 0.15);
   transition: background 0.2s;
-}
-
-.details-btn:hover {
-  background: linear-gradient(90deg, #bfe9ff 0%, #ff6e7f 100%);
+  margin-top: 12px;    /* Add space above the button */
+  margin-bottom: 8px;  /* Add space below the button */
 }
 
 /* Alerts container styling */
