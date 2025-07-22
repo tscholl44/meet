@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-const CitySearch = ({ allLocations = [], setCurrentCity, setInfoAlert }) => { // Add default value here
+const CitySearch = ({ allLocations = [], setCurrentCity, setInfoAlert, inputPlaceholder = "Search for a city" }) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -44,7 +44,7 @@ const CitySearch = ({ allLocations = [], setCurrentCity, setInfoAlert }) => { //
       <input
         type="text"
         className="city"
-        placeholder="Search for a city"
+        placeholder={inputPlaceholder}
         value={query}
         onFocus={() => setShowSuggestions(true)}
         onChange={handleInputChanged}
